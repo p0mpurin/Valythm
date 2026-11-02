@@ -112,6 +112,14 @@ export function useLoop() {
     } catch { setError("That file could not be read as audio. Try another format."); return false; }
   }, [current, start]);
 
+  const rename = useCallback((id: string, name: string) => {
+    const trimmed = name.trim();
+    if (!trimmed) return;
+    const next = segmentsRef.current.map(item => item.id === id ? { ...item, name: trimmed } : item);
+    segmentsRef.current = next;
+    setSegments(next);
+  }, []);
+
   useEffect(() => {
     let frame = 0;
     const tick = () => { if (playingRef.current) setPosition(current()); frame = requestAnimationFrame(tick); };
@@ -120,5 +128,5 @@ export function useLoop() {
   }, [current]);
   useEffect(() => () => { source.current?.stop(); void context.current?.close(); }, []);
 
-  return { segments, total, position, playing, error, setError, add, toggle, seek };
+  return { segments, total, position, playing, error, setError, add, rename, toggle, seek };
 }

@@ -27,6 +27,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # Local environment and keys
+.openai/
 .env*
 .dev.vars*
 *.pem

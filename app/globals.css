@@ -1,0 +1,14 @@
+@import "tailwindcss";
+:root { color-scheme: dark; }
+html { background: #000; }
+body { margin: 0; background: #000; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+button { cursor: pointer; }
+.brand-mark { display: flex; align-items: center; gap: 2.5px; height: 22px; }
+.brand-mark span { width: 2px; border-radius: 2px; background: #dc2626; }
+.brand-mark span:nth-child(1), .brand-mark span:nth-child(4) { height: 8px; opacity: .65; }
+.brand-mark span:nth-child(2) { height: 18px; }
+.brand-mark span:nth-child(3) { height: 13px; }
+.action-button { white-space: nowrap; }
+.record-pulse { animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,.55); } 50% { box-shadow: 0 0 0 8px rgba(220,38,38,0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
